@@ -1,4 +1,4 @@
-package dev.andreszapata.bankfuse.infrastructure.rest.controller;
+package dev.andreszapata.bankfuse.infrastructure.rest;
 
 import dev.andreszapata.bankfuse.domain.model.Client;
 import lombok.RequiredArgsConstructor;
