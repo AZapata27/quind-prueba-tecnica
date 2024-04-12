@@ -2,15 +2,13 @@ package dev.andreszapata.bankfuse.domain.model;
 
 import dev.andreszapata.bankfuse.domain.enums.EstadoCuenta;
 import dev.andreszapata.bankfuse.domain.enums.TipoCuenta;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Builder
+
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     private Long idProduct;
