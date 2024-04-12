@@ -21,14 +21,14 @@ public class RegistrarTransaccionUseCase {
             throw new IllegalArgumentException("El monto de la transacción debe ser mayor que cero");
         }
 
-        Double saldoActual = productRepository.obtenerSaldoProducto(transaccion.getIdProducto());
+        Double saldoActual = productRepository.obtenerSaldoProducto(transaccion.getIdProduct());
 
         if (transaccion.getTipoTransaction() == TipoTransaction.RETIRO && transaccion.getMonto() > saldoActual) {
             throw new IllegalArgumentException("Saldo insuficiente para realizar el retiro");
         }
 
         Double nuevoSaldo = actualizarSaldo(transaccion.getTipoTransaction(), saldoActual, transaccion.getMonto());
-        productRepository.actualizarSaldoProducto(transaccion.getIdProducto(), nuevoSaldo);
+        productRepository.actualizarSaldoProducto(transaccion.getIdProduct(), nuevoSaldo);
 
         transaccionRepository.registrarTransaccion(transaccion);
     }

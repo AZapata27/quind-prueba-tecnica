@@ -9,4 +9,8 @@ public interface ProductRepository {
     Product obtenerProductoPorId(Long idProducto);
     boolean existeProducto(Long idProducto);
     boolean existeProductoActivoByClientId(Long idClient);
+
+    void actualizarSaldoProducto(Long idProduct, Double nuevoSaldo);
+
+    Double obtenerSaldoProducto(Long idProduct);
 }
