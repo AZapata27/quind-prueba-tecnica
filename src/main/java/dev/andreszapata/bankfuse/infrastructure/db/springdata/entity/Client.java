@@ -1,6 +1,6 @@
 package dev.andreszapata.bankfuse.infrastructure.db.springdata.entity;
 
-import dev.andreszapata.bankfuse.infrastructure.db.springdata.enums.TipoIdentificacion;
+import dev.andreszapata.bankfuse.domain.enums.TipoIdentificacion;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

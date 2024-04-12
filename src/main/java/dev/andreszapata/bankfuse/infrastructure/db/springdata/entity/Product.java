@@ -1,11 +1,10 @@
 package dev.andreszapata.bankfuse.infrastructure.db.springdata.entity;
 
-import dev.andreszapata.bankfuse.infrastructure.db.springdata.enums.EstadoCuenta;
-import dev.andreszapata.bankfuse.infrastructure.db.springdata.enums.TipoCuenta;
+import dev.andreszapata.bankfuse.domain.enums.EstadoCuenta;
+import dev.andreszapata.bankfuse.domain.enums.TipoCuenta;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.mapping.ToOne;
 
 @Entity
 @Getter
