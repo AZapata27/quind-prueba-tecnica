@@ -1,9 +1,17 @@
 package dev.andreszapata.bankfuse.domain.model;
 
 import dev.andreszapata.bankfuse.domain.enums.TipoIdentificacion;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
 public class Client {
 
     static final String REGEX_CORREO = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
@@ -15,43 +23,6 @@ public class Client {
     private String apellido;
     private LocalDate fechaNacimiento;
     private String correoElectronico;
-
-    public Client(Long idClient, TipoIdentificacion tipoIdentificacion,
-                  int numeroIdentificacion, String nombres, String apellido,
-                  LocalDate fechaNacimiento, String correoElectronico) {
-        this.idClient = idClient;
-        this.tipoIdentificacion = tipoIdentificacion;
-        this.numeroIdentificacion = numeroIdentificacion;
-        this.nombres = nombres;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
-        this.correoElectronico = correoElectronico;
-    }
-
-    public Long getIdClient() {
-        return idClient;
-    }
-
-    public void setIdClient(Long idClient) {
-        this.idClient = idClient;
-    }
-
-    public TipoIdentificacion getTipoIdentificacion() {
-        return tipoIdentificacion;
-    }
-
-    public void setTipoIdentificacion(TipoIdentificacion tipoIdentificacion) {
-        this.tipoIdentificacion = tipoIdentificacion;
-    }
-
-    public int getNumeroIdentificacion() {
-        return numeroIdentificacion;
-    }
-
-    public void setNumeroIdentificacion(int numeroIdentificacion) {
-        this.numeroIdentificacion = numeroIdentificacion;
-    }
-
 
     public boolean esMenorDeEdad() {
         LocalDate fechaActual = LocalDate.now();
