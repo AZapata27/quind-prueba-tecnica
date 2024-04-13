@@ -1,6 +1,7 @@
 package dev.andreszapata.bankfuse.application.service;
 
 import dev.andreszapata.bankfuse.application.dto.TransaccionRequest;
+import dev.andreszapata.bankfuse.application.mapper.TransaccionRequestMapper;
 import dev.andreszapata.bankfuse.domain.model.Transaction;
 import dev.andreszapata.bankfuse.domain.usecases.RegistrarTransaccionUseCase;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ public class TransaccionApplicationService implements TransaccionService {
 
     public void registrarTransaccion(TransaccionRequest transaccionRequest) {
 
-        registrarTransaccionUseCase.ejecutar(transaccion);
+        registrarTransaccionUseCase.ejecutar(TransaccionRequestMapper.INSTANCE.requestToEntity(transaccionRequest));
     }
 
 }

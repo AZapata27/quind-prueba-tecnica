@@ -17,6 +17,6 @@ public class Product {
     private EstadoCuenta estadoCuenta;
     private Double saldo;
     private Boolean excentaGmf;
-    private Client client;
+    private Long idClient;
 
 }
