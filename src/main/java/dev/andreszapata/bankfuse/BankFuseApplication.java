@@ -1,10 +1,10 @@
-package dev.andreszapata.bankfuse.infrastructure.config.spring;
+package dev.andreszapata.bankfuse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@SpringBootApplication(scanBasePackages = "dev.andreszapata.bankfuse.infrastructure")
+@SpringBootApplication
 public class BankFuseApplication {
 
 	public static void main(String[] args) {

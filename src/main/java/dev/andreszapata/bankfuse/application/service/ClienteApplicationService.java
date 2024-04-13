@@ -6,7 +6,9 @@ import dev.andreszapata.bankfuse.domain.usecases.ActualizarClienteUseCase;
 import dev.andreszapata.bankfuse.domain.usecases.EliminarClienteUseCase;
 import dev.andreszapata.bankfuse.domain.usecases.RegistrarClienteUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class ClienteApplicationService implements ClienteService {
 

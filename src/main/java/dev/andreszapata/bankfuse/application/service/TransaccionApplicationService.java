@@ -4,7 +4,9 @@ import dev.andreszapata.bankfuse.application.dto.TransaccionRequest;
 import dev.andreszapata.bankfuse.domain.model.Transaction;
 import dev.andreszapata.bankfuse.domain.usecases.RegistrarTransaccionUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class TransaccionApplicationService implements TransaccionService {
 

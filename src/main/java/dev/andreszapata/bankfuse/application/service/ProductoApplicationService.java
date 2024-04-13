@@ -6,7 +6,9 @@ import dev.andreszapata.bankfuse.domain.usecases.CambiarEstadoProductoFinanciero
 import dev.andreszapata.bankfuse.domain.usecases.CancelarProductoFinancieroUseCase;
 import dev.andreszapata.bankfuse.domain.usecases.CrearProductoFinancieroUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
 public class ProductoApplicationService implements  ProductoService{
 
