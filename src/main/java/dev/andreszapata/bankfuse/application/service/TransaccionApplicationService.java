@@ -3,14 +3,12 @@ package dev.andreszapata.bankfuse.application.service;
 import dev.andreszapata.bankfuse.application.dto.TransaccionRequest;
 import dev.andreszapata.bankfuse.domain.model.Transaction;
 import dev.andreszapata.bankfuse.domain.usecases.RegistrarTransaccionUseCase;
+import lombok.RequiredArgsConstructor;
 
-public class TransaccionApplicationService {
+@RequiredArgsConstructor
+public class TransaccionApplicationService implements TransaccionService {
 
     private final RegistrarTransaccionUseCase registrarTransaccionUseCase;
-
-    public TransaccionApplicationService(RegistrarTransaccionUseCase registrarTransaccionUseCase) {
-        this.registrarTransaccionUseCase = registrarTransaccionUseCase;
-    }
 
     public void registrarTransaccion(TransaccionRequest transaccionRequest) {
         Transaction transaccion = mapToTransaccion(transaccionRequest);

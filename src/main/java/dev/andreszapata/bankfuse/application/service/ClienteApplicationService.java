@@ -5,20 +5,15 @@ import dev.andreszapata.bankfuse.domain.model.Client;
 import dev.andreszapata.bankfuse.domain.usecases.ActualizarClienteUseCase;
 import dev.andreszapata.bankfuse.domain.usecases.EliminarClienteUseCase;
 import dev.andreszapata.bankfuse.domain.usecases.RegistrarClienteUseCase;
+import lombok.RequiredArgsConstructor;
 
-public class ClienteApplicationService {
+@RequiredArgsConstructor
+public class ClienteApplicationService implements ClienteService {
 
     private final RegistrarClienteUseCase registrarClienteUseCase;
     private final ActualizarClienteUseCase actualizarClienteUseCase;
     private final EliminarClienteUseCase eliminarClienteUseCase;
 
-    public ClienteApplicationService(RegistrarClienteUseCase registrarClienteUseCase,
-                                     ActualizarClienteUseCase actualizarClienteUseCase,
-                                     EliminarClienteUseCase eliminarClienteUseCase) {
-        this.registrarClienteUseCase = registrarClienteUseCase;
-        this.actualizarClienteUseCase = actualizarClienteUseCase;
-        this.eliminarClienteUseCase = eliminarClienteUseCase;
-    }
 
     public void registrarCliente(ClienteRequest clienteRequest) {
         Client cliente = mapToClient(clienteRequest);

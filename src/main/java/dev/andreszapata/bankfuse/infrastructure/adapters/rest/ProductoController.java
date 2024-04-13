@@ -1,4 +1,4 @@
-package dev.andreszapata.bankfuse.infrastructure.rest;
+package dev.andreszapata.bankfuse.infrastructure.adapters.rest;
 
 import dev.andreszapata.bankfuse.application.dto.ProductoRequest;
 import dev.andreszapata.bankfuse.application.service.ProductoApplicationService;

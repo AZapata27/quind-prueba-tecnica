@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
-public class Client {
+public class ClientEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,7 +33,7 @@ public class Client {
     @LastModifiedDate
     private LocalDateTime lastModifiedDate;
 
-    @OneToOne(mappedBy = "client")
-    private Product product;
+    @OneToOne(mappedBy = "clientEntity")
+    private ProductEntity productEntity;
 
 }

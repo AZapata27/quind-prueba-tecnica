@@ -5,20 +5,14 @@ import dev.andreszapata.bankfuse.domain.model.Product;
 import dev.andreszapata.bankfuse.domain.usecases.CambiarEstadoProductoFinancieroUseCase;
 import dev.andreszapata.bankfuse.domain.usecases.CancelarProductoFinancieroUseCase;
 import dev.andreszapata.bankfuse.domain.usecases.CrearProductoFinancieroUseCase;
+import lombok.RequiredArgsConstructor;
 
-public class ProductoApplicationService {
+@RequiredArgsConstructor
+public class ProductoApplicationService implements  ProductoService{
 
     private final CrearProductoFinancieroUseCase crearProductoFinancieroUseCase;
     private final CambiarEstadoProductoFinancieroUseCase cambiarEstadoProductoFinancieroUseCase;
     private final CancelarProductoFinancieroUseCase cancelarProductoFinancieroUseCase;
-
-    public ProductoApplicationService(CrearProductoFinancieroUseCase crearProductoFinancieroUseCase,
-                                      CambiarEstadoProductoFinancieroUseCase cambiarEstadoProductoFinancieroUseCase,
-                                      CancelarProductoFinancieroUseCase cancelarProductoFinancieroUseCase) {
-        this.crearProductoFinancieroUseCase = crearProductoFinancieroUseCase;
-        this.cambiarEstadoProductoFinancieroUseCase = cambiarEstadoProductoFinancieroUseCase;
-        this.cancelarProductoFinancieroUseCase = cancelarProductoFinancieroUseCase;
-    }
 
     public void crearProducto(ProductoRequest productoRequest) {
         Product producto = mapToProducto(productoRequest);
