@@ -21,7 +21,7 @@ public class RegistrarClienteUseCase {
         }
 
         if (!cliente.tieneLongitudNombreValida()) {
-            throw new IllegalArgumentException("La longitud del nombre o apellido es inválida");
+            throw new IllegalArgumentException("La longitud del nombre o apellidos es inválida");
         }
 
         clientRepository.registrarCliente(cliente);

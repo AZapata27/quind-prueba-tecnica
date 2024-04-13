@@ -13,15 +13,8 @@ public class TransaccionApplicationService implements TransaccionService {
     private final RegistrarTransaccionUseCase registrarTransaccionUseCase;
 
     public void registrarTransaccion(TransaccionRequest transaccionRequest) {
-        Transaction transaccion = mapToTransaccion(transaccionRequest);
+
         registrarTransaccionUseCase.ejecutar(transaccion);
     }
 
-    private Transaction mapToTransaccion(TransaccionRequest transaccionRequest) {
-        Transaction transaccion = new Transaction();
-        transaccion.setIdCliente(transaccionRequest.getIdCliente());
-        transaccion.setIdProducto(transaccionRequest.getIdProducto());
-        transaccion.setTipoTransaccion(transaccionRequest.getTipoTransaccion());
-        return transaccion;
-    }
 }

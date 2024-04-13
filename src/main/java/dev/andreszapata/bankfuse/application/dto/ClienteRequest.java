@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ClienteRequest {
     private String nombre;
-    private String apellido;
+    private String apellidos;
     private String tipoIdentificacion;
     private int numeroIdentificacion;
     private String correoElectronico;

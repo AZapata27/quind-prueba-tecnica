@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,6 +27,18 @@ public class ClientEntity {
 
     @Column(name = "numero_identificacion", nullable = false)
     private int numeroIdentificacion;
+
+    @Column(name = "apellidos", nullable = false)
+    private String nombres;
+
+    @Column(name = "apellidos", nullable = false)
+    private String apellidos;
+
+    @Column(name = "fecha_nacimiento", nullable = false)
+    private LocalDate fechaNacimiento;
+
+    @Column(name = "correo_electronico", nullable = false)
+    private String correoElectronico;
 
     @CreatedDate
     private LocalDateTime createdDate;

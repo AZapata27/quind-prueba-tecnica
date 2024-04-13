@@ -15,19 +15,19 @@ public class CrearProductoFinancieroUseCase {
         this.productRepository = productRepository;
     }
 
-    public void ejecutar(TipoCuenta tipoCuenta, Client cliente) {
+    public void ejecutar(TipoCuenta tipoCuenta, Long idCliente) {
 
         if (tipoCuenta != TipoCuenta.CUENTA_CORRIENTE && tipoCuenta != TipoCuenta.CUENTA_AHORROS) {
             throw new IllegalArgumentException("Tipo de cuenta no válido");
         }
 
-        if(productRepository.existeProductoActivoByClientId(cliente.getIdClient())){
+        if(productRepository.existeProductoActivoByClientId(idCliente)){
             throw new IllegalArgumentException("El cliente ya tiene un producto ACTIVO asignado ");
         }
 
         int numeroCuenta = generarNumeroCuenta(tipoCuenta);
 
-        Product producto = new Product(null, tipoCuenta, numeroCuenta, EstadoCuenta.ACTIVA, 0.0, false, cliente);
+        Product producto = new Product(null, tipoCuenta, numeroCuenta, EstadoCuenta.ACTIVA, 0.0, false, idCliente);
 
         productRepository.registrarProducto(producto);
     }

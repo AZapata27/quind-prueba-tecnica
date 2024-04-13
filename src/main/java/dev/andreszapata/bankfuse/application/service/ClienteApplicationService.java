@@ -1,6 +1,7 @@
 package dev.andreszapata.bankfuse.application.service;
 
 import dev.andreszapata.bankfuse.application.dto.ClienteRequest;
+import dev.andreszapata.bankfuse.application.mapper.ClientRequestMapper;
 import dev.andreszapata.bankfuse.domain.model.Client;
 import dev.andreszapata.bankfuse.domain.usecases.ActualizarClienteUseCase;
 import dev.andreszapata.bankfuse.domain.usecases.EliminarClienteUseCase;
@@ -18,25 +19,20 @@ public class ClienteApplicationService implements ClienteService {
 
 
     public void registrarCliente(ClienteRequest clienteRequest) {
-        Client cliente = mapToClient(clienteRequest);
+        Client cliente = ClientRequestMapper.INSTANCE.requestToDomain(clienteRequest);
+
         registrarClienteUseCase.ejecutar(cliente);
     }
 
     public void actualizarCliente(Long idCliente, ClienteRequest clienteRequest) {
-        Client cliente = mapToClient(clienteRequest);
-        cliente.setIdCliente(idCliente);
+
+        Client cliente = ClientRequestMapper.INSTANCE.requestToDomain(clienteRequest);
         actualizarClienteUseCase.ejecutar(cliente);
+
     }
 
     public void eliminarCliente(Long idCliente) {
         eliminarClienteUseCase.ejecutar(idCliente);
     }
 
-    private Client mapToClient(ClienteRequest clienteRequest) {
-        Client cliente = new Client();
-        cliente.setNombre(clienteRequest.getNombre());
-        cliente.setApellido(clienteRequest.getApellido());
-        // Mapear otros atributos...
-        return cliente;
-    }
 }

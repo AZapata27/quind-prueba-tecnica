@@ -1,7 +1,8 @@
 package dev.andreszapata.bankfuse.infrastructure.adapters.rest;
 
 import dev.andreszapata.bankfuse.application.dto.ProductoRequest;
-import dev.andreszapata.bankfuse.application.service.ProductoApplicationService;
+import dev.andreszapata.bankfuse.application.service.ProductoService;
+import dev.andreszapata.bankfuse.domain.enums.EstadoCuenta;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,23 +13,23 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ProductoController {
 
-    private final ProductoApplicationService productoApplicationService;
+    private final ProductoService productoService;
 
     @PostMapping
     public ResponseEntity<String> crearProducto(@RequestBody ProductoRequest productoRequest) {
-        productoApplicationService.crearProducto(productoRequest);
+        productoService.crearProducto(productoRequest);
         return new ResponseEntity<>("Producto creado exitosamente", HttpStatus.CREATED);
     }
 
     @PutMapping("/{idProducto}")
-    public ResponseEntity<String> actualizarProducto(@PathVariable Long idProducto, @RequestBody ProductoRequest productoRequest) {
-        productoApplicationService.actualizarProducto(idProducto, productoRequest);
+    public ResponseEntity<String> actualizarProducto(@PathVariable Long idProducto, @RequestParam EstadoCuenta estadoCuenta) {
+        productoService.actualizarProducto(idProducto, estadoCuenta);
         return new ResponseEntity<>("Producto actualizado exitosamente", HttpStatus.OK);
     }
 
     @DeleteMapping("/{idProducto}")
     public ResponseEntity<String> cancelarProducto(@PathVariable Long idProducto) {
-        productoApplicationService.cancelarProducto(idProducto);
+        productoService.cancelarProducto(idProducto);
         return new ResponseEntity<>("Producto cancelado exitosamente", HttpStatus.OK);
     }
 }

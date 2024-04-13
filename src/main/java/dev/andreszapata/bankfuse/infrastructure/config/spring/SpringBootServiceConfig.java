@@ -43,5 +43,9 @@ public class SpringBootServiceConfig {
     return  new RegistrarTransaccionUseCase(transactionAdapterRepository,productAdapterRepository);
   }
 
+  @Bean
+  public CancelarProductoFinancieroUseCase cancelarProductoFinancieroUseCase(ProductAdapterRepository productAdapterRepository) {
+    return new CancelarProductoFinancieroUseCase(productAdapterRepository);
+  }
 
 }

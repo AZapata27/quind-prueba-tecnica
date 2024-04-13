@@ -1,6 +1,7 @@
 package dev.andreszapata.bankfuse.application.service;
 
 import dev.andreszapata.bankfuse.application.dto.ProductoRequest;
+import dev.andreszapata.bankfuse.domain.enums.EstadoCuenta;
 
 public interface ProductoService {
 
@@ -13,9 +14,9 @@ public interface ProductoService {
     /**
      * Actualiza la información de un producto financiero existente.
      * @param idProducto El identificador del producto a actualizar.
-     * @param productoRequest La nueva información del producto.
+     * @param estadoCuenta El nuevo estado del producto.
      */
-    void actualizarProducto(Long idProducto, ProductoRequest productoRequest);
+    void actualizarProducto(Long idProducto, EstadoCuenta estadoCuenta);
 
     /**
      * Cancela un producto financiero existente.
