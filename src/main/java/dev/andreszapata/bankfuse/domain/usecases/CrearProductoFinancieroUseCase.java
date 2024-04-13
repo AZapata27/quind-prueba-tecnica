@@ -2,6 +2,7 @@ package dev.andreszapata.bankfuse.domain.usecases;
 
 import dev.andreszapata.bankfuse.domain.enums.EstadoCuenta;
 import dev.andreszapata.bankfuse.domain.enums.TipoCuenta;
+import dev.andreszapata.bankfuse.domain.exceptions.CustomException;
 import dev.andreszapata.bankfuse.domain.model.Product;
 import dev.andreszapata.bankfuse.domain.model.Client;
 import dev.andreszapata.bankfuse.domain.repository.ProductRepository;
@@ -18,11 +19,11 @@ public class CrearProductoFinancieroUseCase {
     public void ejecutar(TipoCuenta tipoCuenta, Long idCliente) {
 
         if (tipoCuenta != TipoCuenta.CUENTA_CORRIENTE && tipoCuenta != TipoCuenta.CUENTA_AHORROS) {
-            throw new IllegalArgumentException("Tipo de cuenta no válido");
+            throw new CustomException("Tipo de cuenta no válido");
         }
 
         if(productRepository.existeProductoActivoByClientId(idCliente)){
-            throw new IllegalArgumentException("El cliente ya tiene un producto ACTIVO asignado ");
+            throw new CustomException("El cliente ya tiene un producto ACTIVO asignado ");
         }
 
         int numeroCuenta = generarNumeroCuenta(tipoCuenta);
@@ -40,7 +41,7 @@ public class CrearProductoFinancieroUseCase {
         } else if (tipoCuenta == TipoCuenta.CUENTA_CORRIENTE) {
             numeroCuentaBuilder.append("33");
         } else {
-            throw new IllegalArgumentException("Tipo de cuenta no válido");
+            throw new CustomException("Tipo de cuenta no válido");
         }
 
         Random random = new Random();

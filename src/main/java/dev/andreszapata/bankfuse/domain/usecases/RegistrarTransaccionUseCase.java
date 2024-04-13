@@ -1,6 +1,7 @@
 package dev.andreszapata.bankfuse.domain.usecases;
 
 import dev.andreszapata.bankfuse.domain.enums.TipoTransaction;
+import dev.andreszapata.bankfuse.domain.exceptions.CustomException;
 import dev.andreszapata.bankfuse.domain.model.Transaction;
 import dev.andreszapata.bankfuse.domain.repository.ProductRepository;
 import dev.andreszapata.bankfuse.domain.repository.TransaccionRepository;
@@ -18,13 +19,13 @@ public class RegistrarTransaccionUseCase {
     public void ejecutar(Transaction transaccion) {
 
         if (transaccion.getMonto() <= 0) {
-            throw new IllegalArgumentException("El monto de la transacción debe ser mayor que cero");
+            throw new CustomException("El monto de la transacción debe ser mayor que cero");
         }
 
         Double saldoActual = productRepository.obtenerSaldoProducto(transaccion.getIdProduct());
 
         if (transaccion.getTipoTransaction() == TipoTransaction.RETIRO && transaccion.getMonto() > saldoActual) {
-            throw new IllegalArgumentException("Saldo insuficiente para realizar el retiro");
+            throw new CustomException("Saldo insuficiente para realizar el retiro");
         }
 
         Double nuevoSaldo = actualizarSaldo(transaccion.getTipoTransaction(), saldoActual, transaccion.getMonto());
@@ -43,7 +44,7 @@ public class RegistrarTransaccionUseCase {
                 // En una transferencia, el saldo no cambia en la cuenta de envío, ya que se realiza una transacción separada
                 return saldoActual;
             default:
-                throw new IllegalArgumentException("Tipo de transacción no válido");
+                throw new CustomException("Tipo de transacción no válido");
         }
     }
 }
