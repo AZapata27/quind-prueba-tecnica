@@ -28,23 +28,32 @@ public class RegistrarTransaccionUseCase {
             throw new CustomException("Saldo insuficiente para realizar el retiro");
         }
 
-        Double nuevoSaldo = actualizarSaldo(transaccion.getTipoTransaction(), saldoActual, transaccion.getMonto());
+        Double nuevoSaldo = actualizarSaldo(transaccion , saldoActual );
         productRepository.actualizarSaldoProducto(transaccion.getIdProduct(), nuevoSaldo);
 
         transaccionRepository.registrarTransaccion(transaccion);
     }
 
-    private Double actualizarSaldo(TipoTransaction tipoTransaction, Double saldoActual, Double monto) {
-        switch (tipoTransaction) {
-            case CONSIGNACION:
-                return saldoActual + monto;
-            case RETIRO:
-                return saldoActual - monto;
-            case TRANSFERENCIA:
-                // En una transferencia, el saldo no cambia en la cuenta de envío, ya que se realiza una transacción separada
-                return saldoActual;
-            default:
-                throw new CustomException("Tipo de transacción no válido");
+    protected Double actualizarSaldo(Transaction transaccion, Double saldoActual) {
+        return switch (transaccion.getTipoTransaction()) {
+            case CONSIGNACION -> saldoActual +  transaccion.getMonto();
+            case RETIRO -> saldoActual -  transaccion.getMonto();
+            case TRANSFERENCIA -> {
+                realizarTransferecncia(transaccion);
+                yield saldoActual -  transaccion.getMonto();
+            }
+        };
+    }
+
+    protected void realizarTransferecncia(Transaction transaccion) {
+
+        try {
+
+            productRepository.agregarSaldoProducto(transaccion.getMonto(), transaccion.getNumeroCuentaDestinoTransferencia());
+
+        } catch (Exception e){
+            throw new CustomException(e.getMessage(), e);
         }
+
     }
 }

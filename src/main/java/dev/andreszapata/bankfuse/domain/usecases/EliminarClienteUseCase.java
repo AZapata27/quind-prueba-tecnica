@@ -12,7 +12,7 @@ public class EliminarClienteUseCase {
 
     public void ejecutar(Long idCliente) {
 
-        if (clientRepository.tieneProductosVinculados(idCliente)) {
+        if (clientRepository.tieneProductosVinculadosActivos(idCliente)) {
             throw new CustomException("El cliente tiene productos vinculados y no puede ser eliminado");
         }
 

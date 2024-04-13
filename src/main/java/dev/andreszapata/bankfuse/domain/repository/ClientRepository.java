@@ -7,5 +7,5 @@ public interface ClientRepository {
     void actualizarCliente(Client cliente);
     void eliminarCliente(Long idCliente);
     boolean existeCliente(Long idCliente);
-    boolean tieneProductosVinculados(Long idCliente);
+    boolean tieneProductosVinculadosActivos(Long idCliente);
 }

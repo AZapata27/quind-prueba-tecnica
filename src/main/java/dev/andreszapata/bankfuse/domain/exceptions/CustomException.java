@@ -4,4 +4,8 @@ public class CustomException extends RuntimeException {
     public CustomException(String ex) {
         super(ex);
     }
+
+    public CustomException(String ex, Exception e) {
+        super(ex,e);
+    }
 }

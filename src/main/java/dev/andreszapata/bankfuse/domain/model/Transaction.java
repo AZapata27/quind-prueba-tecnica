@@ -18,5 +18,6 @@ public class Transaction {
     private TipoTransaction tipoTransaction;
     private LocalDateTime fechaTransaccion;
     private Double monto;
+    private int numeroCuentaDestinoTransferencia;
 
 }

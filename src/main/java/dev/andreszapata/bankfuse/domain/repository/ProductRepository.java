@@ -13,4 +13,6 @@ public interface ProductRepository {
     void actualizarSaldoProducto(Long idProduct, Double nuevoSaldo);
 
     Double obtenerSaldoProducto(Long idProduct);
+
+    void agregarSaldoProducto(Double monto, int numeroCuentaDestinoTransferencia);
 }
