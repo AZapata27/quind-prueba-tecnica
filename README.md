@@ -44,7 +44,7 @@ The REST API provides endpoints for managing clients and financial products. Her
     - `DELETE /api/v1/products/{id}`: Cancel an existing product.
   
 - - **Transactions**:
-    - `POST /api/v1/transaccion`: Create a new transaction base on product and client.
+    - `POST /api/v1/transaction`: Create a new transaction base on product and client.
 
 ## Additional Documentation
 
