@@ -53,7 +53,7 @@ You can access it at [http://localhost:8080/swagger-ui.html](http://localhost:80
 
 ## ANALYSIS && DIAGRAMS
 
-![ANALYSIS] (https://github.com/AZapata27/quind-prueba-tecnica/blob/master/src/main/resources/static/Analisis.png).
+![ANALYSIS](https://github.com/AZapata27/quind-prueba-tecnica/blob/master/src/main/resources/static/Analysis.png).
 
 
 ![DIAGRAM](https://github.com/AZapata27/quind-prueba-tecnica/blob/master/src/main/resources/static/diagrama_flujo.png).
