@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 public class ProductAdapterRepository implements ProductRepository {
 
     private final ProductRepositoryJpa productRepositoryJpa;
-    private final ProductMapper productMapper;
 
     @Override
     public void registrarProducto(Product producto) {
@@ -40,7 +39,7 @@ public class ProductAdapterRepository implements ProductRepository {
     @Override
     public Product obtenerProductoPorId(Long idProducto) {
 
-        return productMapper.entityToDomain(productRepositoryJpa.findById(idProducto)
+        return ProductMapper.INSTANCE.entityToDomain(productRepositoryJpa.findById(idProducto)
                 .orElseThrow(() -> new CustomException("No se encontro el producto")));
     }
 
@@ -51,7 +50,7 @@ public class ProductAdapterRepository implements ProductRepository {
 
     @Override
     public boolean existeProductoActivoByClientId(Long idClient) {
-        return productRepositoryJpa.existsByIdAndEstadoCuenta(idClient, EstadoCuenta.ACTIVA);
+        return productRepositoryJpa.existsByIdProductAndEstadoCuenta(idClient, EstadoCuenta.ACTIVA);
     }
 
     @Override

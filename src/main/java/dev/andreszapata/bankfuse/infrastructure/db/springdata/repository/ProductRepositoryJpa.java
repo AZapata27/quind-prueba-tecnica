@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface ProductRepositoryJpa extends JpaRepository<ProductEntity, Long> {
 
 
-    boolean existsByIdAndEstadoCuenta(Long idClient,EstadoCuenta estadoCuenta);
+    boolean existsByIdProductAndEstadoCuenta(Long idClient, EstadoCuenta estadoCuenta);
 
     Optional<ProductEntity> findByNumeroCuenta(int numeroCuenta);
 

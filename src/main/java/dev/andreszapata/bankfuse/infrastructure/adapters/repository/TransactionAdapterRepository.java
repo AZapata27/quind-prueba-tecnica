@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 public class TransactionAdapterRepository implements TransaccionRepository {
 
     private final TransactionRepositoryJpa transactionRepositoryJpa;
-    private final TransactionMapper transactionMapper;
 
 
     @Override
@@ -28,7 +27,7 @@ public class TransactionAdapterRepository implements TransaccionRepository {
     public List<Transaction> obtenerTransaccionesPorCliente(Long idCliente) {
         return transactionRepositoryJpa.findByIdClient(idCliente)
                 .stream()
-                .map(transactionMapper::entityToDomain)
-                .collect(Collectors.toList());
+                .map(TransactionMapper.INSTANCE::entityToDomain)
+                .toList();
     }
 }
