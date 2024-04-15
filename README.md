@@ -5,7 +5,7 @@ The application allows for the management of clients and financial products for 
 
 ## System Requirements
 
-- Java 17
+- Java 21
 - Maven
 - Spring Boot 3.2.4
 - H2 Database
