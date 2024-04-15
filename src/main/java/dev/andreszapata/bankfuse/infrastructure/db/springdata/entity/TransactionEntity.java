@@ -20,13 +20,13 @@ public class TransactionEntity {
     private Long idTransaccion;
 
     @Column(name = "id_cliente", nullable = false)
-    private Long idClient;
+    private Long idCliente;
 
-    @Column(name = "id_product", nullable = false)
-    private Long idProduct;
+    @Column(name = "id_producto", nullable = false)
+    private Long idProducto;
 
     @Column(name = "tipo_transaccion", nullable = false)
-    private TipoTransaction tipoTransaction;
+    private TipoTransaction tipoTransaccion;
 
     @Column(name = "fecha_transaccion", nullable = false)
     private LocalDateTime fechaTransaccion;

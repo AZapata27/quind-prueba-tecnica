@@ -6,6 +6,8 @@ import dev.andreszapata.bankfuse.domain.model.Transaction;
 import dev.andreszapata.bankfuse.domain.repository.ProductRepository;
 import dev.andreszapata.bankfuse.domain.repository.TransaccionRepository;
 
+import java.time.LocalDateTime;
+
 public class RegistrarTransaccionUseCase {
 
     private final TransaccionRepository transaccionRepository;
@@ -22,20 +24,22 @@ public class RegistrarTransaccionUseCase {
             throw new CustomException("El monto de la transacción debe ser mayor que cero");
         }
 
-        Double saldoActual = productRepository.obtenerSaldoProducto(transaccion.getIdProduct());
+        Double saldoActual = productRepository.obtenerSaldoProducto(transaccion.getIdProducto());
 
-        if (transaccion.getTipoTransaction() == TipoTransaction.RETIRO && transaccion.getMonto() > saldoActual) {
+        if (transaccion.getTipoTransaccion() == TipoTransaction.RETIRO && transaccion.getMonto() > saldoActual) {
             throw new CustomException("Saldo insuficiente para realizar el retiro");
         }
 
+        transaccion.setFechaTransaccion(LocalDateTime.now());
+
         Double nuevoSaldo = actualizarSaldo(transaccion , saldoActual );
-        productRepository.actualizarSaldoProducto(transaccion.getIdProduct(), nuevoSaldo);
+        productRepository.actualizarSaldoProducto(transaccion.getIdProducto(), nuevoSaldo);
 
         transaccionRepository.registrarTransaccion(transaccion);
     }
 
     protected Double actualizarSaldo(Transaction transaccion, Double saldoActual) {
-        return switch (transaccion.getTipoTransaction()) {
+        return switch (transaccion.getTipoTransaccion()) {
             case CONSIGNACION -> saldoActual +  transaccion.getMonto();
             case RETIRO -> saldoActual -  transaccion.getMonto();
             case TRANSFERENCIA -> {

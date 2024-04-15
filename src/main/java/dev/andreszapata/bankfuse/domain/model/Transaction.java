@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 public class Transaction {
 
     private Long idTransaccion;
-    private Long idClient;
-    private Long idProduct;
-    private TipoTransaction tipoTransaction;
+    private Long idCliente;
+    private Long idProducto;
+    private TipoTransaction tipoTransaccion;
     private LocalDateTime fechaTransaccion;
     private Double monto;
     private int numeroCuentaDestinoTransferencia;
