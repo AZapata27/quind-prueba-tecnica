@@ -9,6 +9,7 @@ The application allows for the management of clients and financial products for 
 - Maven
 - Spring Boot 3.2.4
 - H2 Database
+- MapStruct
 - Lombok (optional)
 
 ## Project Structure
