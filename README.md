@@ -50,3 +50,10 @@ The REST API provides endpoints for managing clients and financial products. Her
 
 For more details on how to use the API and data models, refer to the automatically generated documentation in Swagger UI. 
 You can access it at [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) once the application is running.
+
+## ANALYSIS && DIAGRAMS
+
+![ANALYSIS](https://github.com/AZapata27/quind-prueba-tecnica/blob/master/src/main/resources/static/Analisis.png).
+
+
+![DIAGRAM](https://github.com/AZapata27/quind-prueba-tecnica/blob/master/src/main/resources/static/diagrama_flujo.png).
