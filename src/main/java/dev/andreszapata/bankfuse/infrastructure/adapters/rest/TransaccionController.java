@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/transaccion")
+@RequestMapping("/api/v1/transaccion")
 @RequiredArgsConstructor
 public class TransaccionController {
 
