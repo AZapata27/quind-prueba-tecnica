@@ -1,5 +1,6 @@
 package dev.andreszapata.bankfuse.domain.usecases;
 
+import dev.andreszapata.bankfuse.domain.exceptions.CustomException;
 import dev.andreszapata.bankfuse.domain.model.Client;
 import dev.andreszapata.bankfuse.domain.repository.ClientRepository;
 
@@ -13,7 +14,7 @@ public class ActualizarClienteUseCase {
     public void ejecutar(Client cliente) {
 
         if (!clientRepository.existeCliente(cliente.getIdClient())) {
-            throw new IllegalArgumentException("El cliente no existe");
+            throw new CustomException("El cliente no existe");
         }
 
         clientRepository.actualizarCliente(cliente);

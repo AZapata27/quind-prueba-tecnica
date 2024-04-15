@@ -1,5 +1,6 @@
 package dev.andreszapata.bankfuse.domain.usecases;
 
+import dev.andreszapata.bankfuse.domain.exceptions.CustomException;
 import dev.andreszapata.bankfuse.domain.repository.ClientRepository;
 
 public class EliminarClienteUseCase {
@@ -11,8 +12,8 @@ public class EliminarClienteUseCase {
 
     public void ejecutar(Long idCliente) {
 
-        if (clientRepository.tieneProductosVinculados(idCliente)) {
-            throw new IllegalStateException("El cliente tiene productos vinculados y no puede ser eliminado");
+        if (clientRepository.tieneProductosVinculadosActivos(idCliente)) {
+            throw new CustomException("El cliente tiene productos vinculados y no puede ser eliminado");
         }
 
         clientRepository.eliminarCliente(idCliente);

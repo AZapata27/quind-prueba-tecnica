@@ -9,4 +9,5 @@ public class TransaccionRequest {
     private Long idProducto;
     private TipoTransaction tipoTransaccion;
     private Double monto;
+    private int numeroCuentaDestinoTransferencia;
 }
