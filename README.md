@@ -25,7 +25,7 @@ To run the application, simply follow these steps:
 
 1. Clone the repository from [GitHub](https://github.com/AZapata27/quind-prueba-tecnica.git).
 2. Open the project in your favorite IDE.
-3. Make sure you have Java 17 installed.
+3. Make sure you have Java 21 installed.
 4. Run `mvn clean install` to build the project.
 5. Run the main class `Application.java`.
 
