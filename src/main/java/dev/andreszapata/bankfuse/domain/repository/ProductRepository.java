@@ -3,7 +3,7 @@ package dev.andreszapata.bankfuse.domain.repository;
 import dev.andreszapata.bankfuse.domain.model.Product;
 
 public interface ProductRepository {
-    void registrarProducto(Product producto);
+    Long registrarProducto(Product producto);
     void actualizarProducto(Product producto);
     void eliminarProducto(Long idProducto);
     Product obtenerProductoPorId(Long idProducto);

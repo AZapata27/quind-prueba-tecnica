@@ -13,7 +13,7 @@ public class Product {
 
     private Long idProduct;
     private TipoCuenta tipoCuenta;
-    private int numeroCuenta;
+    private Long numeroCuenta;
     private EstadoCuenta estadoCuenta;
     private Double saldo;
     private Boolean excentaGmf;

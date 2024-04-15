@@ -1,8 +1,8 @@
 package dev.andreszapata.bankfuse.infrastructure.adapters.rest;
 
 import dev.andreszapata.bankfuse.application.dto.ClienteRequest;
+import dev.andreszapata.bankfuse.application.dto.GenericResponse;
 import dev.andreszapata.bankfuse.application.service.ClienteService;
-import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,15 +18,22 @@ public class ClienteController {
 
     private final ClienteService clienteService;
 
-    @Operation(summary = "Register a new client")
+    @Operation(summary = "Register a new client and return Id")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Client successfully registered"),
             @ApiResponse(code = 400, message = "Bad request")
     })
     @PostMapping
-    public ResponseEntity<String> registrarCliente(@RequestBody ClienteRequest clienteRequest) {
-        clienteService.registrarCliente(clienteRequest);
-        return new ResponseEntity<>("Cliente registrado exitosamente", HttpStatus.CREATED);
+    public ResponseEntity<GenericResponse> registrarCliente(@RequestBody ClienteRequest clienteRequest) {
+
+
+        Long idCliente = clienteService.registrarCliente(clienteRequest);
+
+        var response = new GenericResponse();
+        response.setMensajeRespuesta("Cliente registrado exitosamente");
+        response.setId(idCliente);
+
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @Operation(summary = "Update an existing client")
@@ -36,9 +43,15 @@ public class ClienteController {
             @ApiResponse(code = 404, message = "Client not found")
     })
     @PutMapping("/{idCliente}")
-    public ResponseEntity<String> actualizarCliente(@PathVariable Long idCliente, @RequestBody ClienteRequest clienteRequest) {
+    public ResponseEntity<GenericResponse> actualizarCliente(@PathVariable Long idCliente, @RequestBody ClienteRequest clienteRequest) {
         clienteService.actualizarCliente(idCliente, clienteRequest);
-        return new ResponseEntity<>("Cliente actualizado exitosamente", HttpStatus.OK);
+
+        var response = new GenericResponse();
+        response.setMensajeRespuesta("Cliente actualizado exitosamente");
+        response.setId(idCliente);
+
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Operation(summary ="Delete an existing client")
@@ -47,8 +60,13 @@ public class ClienteController {
             @ApiResponse(code = 404, message = "Client not found")
     })
     @DeleteMapping("/{idCliente}")
-    public ResponseEntity<String> eliminarCliente(@PathVariable Long idCliente) {
+    public ResponseEntity<GenericResponse> eliminarCliente(@PathVariable Long idCliente) {
         clienteService.eliminarCliente(idCliente);
-        return new ResponseEntity<>("Cliente eliminado exitosamente", HttpStatus.OK);
+
+        var response = new GenericResponse();
+        response.setMensajeRespuesta("Cliente eliminado exitosamente");
+        response.setId(idCliente);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

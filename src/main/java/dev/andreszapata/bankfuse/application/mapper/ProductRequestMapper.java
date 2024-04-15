@@ -5,10 +5,9 @@ import dev.andreszapata.bankfuse.domain.model.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring",
+        uses = {ProductRequestMapper.class})
 public interface ProductRequestMapper {
-
-    ProductRequestMapper INSTANCE = Mappers.getMapper(ProductRequestMapper.class);
 
     Product requestToDomain(ProductoRequest productoRequest);
 

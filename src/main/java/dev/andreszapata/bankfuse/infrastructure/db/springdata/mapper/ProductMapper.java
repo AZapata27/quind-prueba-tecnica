@@ -5,10 +5,9 @@ import dev.andreszapata.bankfuse.infrastructure.db.springdata.entity.ProductEnti
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring",
+        uses = {ProductMapper.class})
 public interface ProductMapper {
-
-    ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
 
     Product entityToDomain(ProductEntity productEntity);
 

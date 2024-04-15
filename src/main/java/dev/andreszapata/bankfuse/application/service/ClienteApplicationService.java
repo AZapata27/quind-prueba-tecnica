@@ -16,17 +16,18 @@ public class ClienteApplicationService implements ClienteService {
     private final RegistrarClienteUseCase registrarClienteUseCase;
     private final ActualizarClienteUseCase actualizarClienteUseCase;
     private final EliminarClienteUseCase eliminarClienteUseCase;
+    private final ClientRequestMapper clientRequestMapper;
 
 
-    public void registrarCliente(ClienteRequest clienteRequest) {
-        Client cliente = ClientRequestMapper.INSTANCE.requestToDomain(clienteRequest);
+    public Long registrarCliente(ClienteRequest clienteRequest) {
+        Client cliente = clientRequestMapper.requestToDomain(clienteRequest);
 
-        registrarClienteUseCase.ejecutar(cliente);
+        return registrarClienteUseCase.ejecutar(cliente);
     }
 
     public void actualizarCliente(Long idCliente, ClienteRequest clienteRequest) {
 
-        Client cliente = ClientRequestMapper.INSTANCE.requestToDomain(clienteRequest);
+        Client cliente = clientRequestMapper.requestToDomain(clienteRequest);
         actualizarClienteUseCase.ejecutar(cliente);
 
     }

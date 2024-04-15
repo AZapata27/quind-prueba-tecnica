@@ -3,12 +3,15 @@ package dev.andreszapata.bankfuse.application.dto;
 import dev.andreszapata.bankfuse.domain.enums.TipoIdentificacion;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class ClienteRequest {
-    private String nombre;
+    private String nombres;
     private String apellidos;
     private TipoIdentificacion tipoIdentificacion;
-    private int numeroIdentificacion;
+    private Integer numeroIdentificacion;
     private String correoElectronico;
-    private String fechaNacimiento;
+    private LocalDate fechaNacimiento;
 }
+

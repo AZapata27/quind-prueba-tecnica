@@ -29,8 +29,9 @@ public class SpringBootServiceConfig {
   }
 
   @Bean
-  public CrearProductoFinancieroUseCase crearProductoFinancieroUseCase(ProductAdapterRepository productAdapterRepository) {
-    return new CrearProductoFinancieroUseCase(productAdapterRepository);
+  public CrearProductoFinancieroUseCase crearProductoFinancieroUseCase(ProductAdapterRepository productAdapterRepository,
+                                                                       ClientAdapterRepository clientAdapterRepository) {
+    return new CrearProductoFinancieroUseCase(productAdapterRepository,clientAdapterRepository);
   }
 
   @Bean

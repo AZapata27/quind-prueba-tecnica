@@ -13,18 +13,19 @@ public class ClientAdapterRepository implements ClientRepository {
 
 
     private final ClientRepositoryJpa clientRepositoryJpa;
+    private final ClientMapper productMapper;
 
 
 
     @Override
-    public void registrarCliente(Client cliente) {
-        clientRepositoryJpa.save(ClientMapper.INSTANCE.domainToEntity(cliente));
+    public Long registrarCliente(Client cliente) {
+        return clientRepositoryJpa.save(productMapper.domainToEntity(cliente)).getIdClient();
 
     }
 
     @Override
     public void actualizarCliente(Client cliente) {
-        clientRepositoryJpa.save(ClientMapper.INSTANCE.domainToEntity(cliente));
+        clientRepositoryJpa.save(productMapper.domainToEntity(cliente));
     }
 
     @Override

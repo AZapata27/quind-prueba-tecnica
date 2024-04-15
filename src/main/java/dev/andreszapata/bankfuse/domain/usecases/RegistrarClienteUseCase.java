@@ -11,7 +11,7 @@ public class RegistrarClienteUseCase {
         this.clientRepository = clientRepository;
     }
 
-    public void ejecutar(Client cliente) {
+    public Long ejecutar(Client cliente) {
 
         if (cliente.esMenorDeEdad()) {
             throw new CustomException("El cliente debe ser mayor de edad");
@@ -25,6 +25,10 @@ public class RegistrarClienteUseCase {
             throw new CustomException("La longitud del nombre o apellidos es inválida");
         }
 
-        clientRepository.registrarCliente(cliente);
+        if (!cliente.esIdentificacionValida()) {
+            throw new CustomException("La identificacion es inválida");
+        }
+
+        return clientRepository.registrarCliente(cliente);
     }
 }

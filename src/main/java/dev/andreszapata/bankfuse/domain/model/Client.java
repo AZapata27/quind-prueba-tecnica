@@ -15,7 +15,7 @@ public class Client {
 
     private Long idClient;
     private TipoIdentificacion tipoIdentificacion;
-    private int numeroIdentificacion;
+    private Integer numeroIdentificacion;
     private String nombres;
     private String apellidos;
     private LocalDate fechaNacimiento;
@@ -34,6 +34,10 @@ public class Client {
     }
 
     public boolean tieneLongitudNombreValida() {
-        return nombres.length() >= 2 && apellidos.length() >= 2;
+        return nombres !=null && nombres.length() >= 2 && apellidos !=null && apellidos.length() >= 2;
+    }
+
+    public boolean esIdentificacionValida() {
+        return numeroIdentificacion !=null && numeroIdentificacion <= 0;
     }
 }

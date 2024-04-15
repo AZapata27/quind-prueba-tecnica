@@ -1,9 +1,9 @@
 package dev.andreszapata.bankfuse.infrastructure.adapters.rest;
 
+import dev.andreszapata.bankfuse.application.dto.GenericResponse;
 import dev.andreszapata.bankfuse.application.dto.ProductoRequest;
 import dev.andreszapata.bankfuse.application.service.ProductoService;
 import dev.andreszapata.bankfuse.domain.enums.EstadoCuenta;
-import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,9 +25,15 @@ public class ProductoController {
             @ApiResponse(code = 400, message = "Bad request")
     })
     @PostMapping
-    public ResponseEntity<String> crearProducto(@RequestBody ProductoRequest productoRequest) {
-        productoService.crearProducto(productoRequest);
-        return new ResponseEntity<>("Producto creado exitosamente", HttpStatus.CREATED);
+    public ResponseEntity<GenericResponse> crearProducto(@RequestBody ProductoRequest productoRequest) {
+        Long idProducto = productoService.crearProducto(productoRequest);
+
+        var response = new GenericResponse();
+        response.setMensajeRespuesta("Producto creado exitosamente");
+        response.setId(idProducto);
+
+
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @Operation(summary = "Update an existing product")
@@ -37,9 +43,14 @@ public class ProductoController {
             @ApiResponse(code = 404, message = "Product not found")
     })
     @PutMapping("/{idProducto}")
-    public ResponseEntity<String> actualizarProducto(@PathVariable Long idProducto, @RequestParam EstadoCuenta estadoCuenta) {
+    public ResponseEntity<GenericResponse> actualizarProducto(@PathVariable Long idProducto, @RequestParam EstadoCuenta estadoCuenta) {
         productoService.actualizarProducto(idProducto, estadoCuenta);
-        return new ResponseEntity<>("Producto actualizado exitosamente", HttpStatus.OK);
+
+        var response = new GenericResponse();
+        response.setMensajeRespuesta("Producto actualizado exitosamente");
+        response.setId(idProducto);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @Operation(summary = "Cancel an existing product")
@@ -48,8 +59,13 @@ public class ProductoController {
             @ApiResponse(code = 404, message = "Product not found")
     })
     @DeleteMapping("/{idProducto}")
-    public ResponseEntity<String> cancelarProducto(@PathVariable Long idProducto) {
+    public ResponseEntity<GenericResponse> cancelarProducto(@PathVariable Long idProducto) {
         productoService.cancelarProducto(idProducto);
-        return new ResponseEntity<>("Producto cancelado exitosamente", HttpStatus.OK);
+
+        var response = new GenericResponse();
+        response.setMensajeRespuesta("Producto actualizado exitosamente");
+        response.setId(idProducto);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

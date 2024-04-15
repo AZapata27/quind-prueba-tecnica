@@ -7,8 +7,9 @@ public interface ClienteService {
     /**
      * Registra un nuevo cliente.
      * @param clienteRequest La información del cliente a registrar.
+     * @return Long idCliente recien creado
      */
-    void registrarCliente(ClienteRequest clienteRequest);
+    Long registrarCliente(ClienteRequest clienteRequest);
 
     /**
      * Actualiza la información de un cliente existente.

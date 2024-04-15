@@ -12,10 +12,11 @@ import org.springframework.stereotype.Service;
 public class TransaccionApplicationService implements TransaccionService {
 
     private final RegistrarTransaccionUseCase registrarTransaccionUseCase;
+    private final TransaccionRequestMapper transaccionRequestMapper;
 
     public void registrarTransaccion(TransaccionRequest transaccionRequest) {
 
-        registrarTransaccionUseCase.ejecutar(TransaccionRequestMapper.INSTANCE.requestToEntity(transaccionRequest));
+        registrarTransaccionUseCase.ejecutar(transaccionRequestMapper.requestToEntity(transaccionRequest));
     }
 
 }

@@ -5,18 +5,26 @@ import dev.andreszapata.bankfuse.domain.enums.TipoCuenta;
 import dev.andreszapata.bankfuse.domain.exceptions.CustomException;
 import dev.andreszapata.bankfuse.domain.model.Product;
 import dev.andreszapata.bankfuse.domain.model.Client;
+import dev.andreszapata.bankfuse.domain.repository.ClientRepository;
 import dev.andreszapata.bankfuse.domain.repository.ProductRepository;
 
 import java.util.Random;
 
 public class CrearProductoFinancieroUseCase {
     private final ProductRepository productRepository;
+    private final ClientRepository clientRepository;
 
-    public CrearProductoFinancieroUseCase(ProductRepository productRepository) {
+    public CrearProductoFinancieroUseCase(ProductRepository productRepository,
+                                          ClientRepository clientRepository) {
         this.productRepository = productRepository;
+        this.clientRepository = clientRepository;
     }
 
-    public void ejecutar(TipoCuenta tipoCuenta, Long idCliente) {
+    public Long ejecutar(TipoCuenta tipoCuenta, Long idCliente) {
+
+        if(!clientRepository.existeCliente(idCliente)){
+            throw new CustomException("El cliente no existe en el sistema");
+        }
 
         if (tipoCuenta != TipoCuenta.CUENTA_CORRIENTE && tipoCuenta != TipoCuenta.CUENTA_AHORROS) {
             throw new CustomException("Tipo de cuenta no válido");
@@ -26,14 +34,14 @@ public class CrearProductoFinancieroUseCase {
             throw new CustomException("El cliente ya tiene un producto ACTIVO asignado ");
         }
 
-        int numeroCuenta = generarNumeroCuenta(tipoCuenta);
+        long numeroCuenta = generarNumeroCuenta(tipoCuenta);
 
         Product producto = new Product(null, tipoCuenta, numeroCuenta, EstadoCuenta.ACTIVA, 0.0, false, idCliente);
 
-        productRepository.registrarProducto(producto);
+       return productRepository.registrarProducto(producto);
     }
 
-    private int generarNumeroCuenta(TipoCuenta tipoCuenta) {
+    private long generarNumeroCuenta(TipoCuenta tipoCuenta) {
         StringBuilder numeroCuentaBuilder = new StringBuilder();
 
         if (tipoCuenta == TipoCuenta.CUENTA_AHORROS) {
@@ -50,6 +58,6 @@ public class CrearProductoFinancieroUseCase {
             numeroCuentaBuilder.append(random.nextInt(10));
         }
 
-        return Integer.parseInt(numeroCuentaBuilder.toString());
+        return Long.parseLong(numeroCuentaBuilder.toString());
     }
 }

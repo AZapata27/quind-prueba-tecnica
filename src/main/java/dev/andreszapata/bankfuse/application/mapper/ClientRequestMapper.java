@@ -5,10 +5,9 @@ import dev.andreszapata.bankfuse.domain.model.Client;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring",
+        uses = {ClientRequestMapper.class})
 public interface ClientRequestMapper {
-
-    ClientRequestMapper INSTANCE = Mappers.getMapper(ClientRequestMapper.class);
 
     Client requestToDomain(ClienteRequest request);
 

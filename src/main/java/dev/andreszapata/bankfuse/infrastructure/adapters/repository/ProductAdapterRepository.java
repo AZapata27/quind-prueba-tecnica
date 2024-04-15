@@ -16,17 +16,18 @@ import org.springframework.stereotype.Service;
 public class ProductAdapterRepository implements ProductRepository {
 
     private final ProductRepositoryJpa productRepositoryJpa;
+    private final ProductMapper productMapper;
 
     @Override
-    public void registrarProducto(Product producto) {
+    public Long registrarProducto(Product producto) {
 
-        productRepositoryJpa.save(ProductMapper.INSTANCE.domainToEntity(producto));
+        return productRepositoryJpa.save(productMapper.domainToEntity(producto)).getIdProduct();
 
     }
 
     @Override
     public void actualizarProducto(Product producto) {
-        productRepositoryJpa.save(ProductMapper.INSTANCE.domainToEntity(producto));
+        productRepositoryJpa.save(productMapper.domainToEntity(producto));
 
     }
 
@@ -39,7 +40,7 @@ public class ProductAdapterRepository implements ProductRepository {
     @Override
     public Product obtenerProductoPorId(Long idProducto) {
 
-        return ProductMapper.INSTANCE.entityToDomain(productRepositoryJpa.findById(idProducto)
+        return productMapper.entityToDomain(productRepositoryJpa.findById(idProducto)
                 .orElseThrow(() -> new CustomException("No se encontro el producto")));
     }
 

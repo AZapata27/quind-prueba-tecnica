@@ -8,8 +8,9 @@ public interface ProductoService {
     /**
      * Crea un nuevo producto financiero.
      * @param productoRequest La información del producto a crear.
+     * @return idProducto El id del producto recien creado
      */
-    void crearProducto(ProductoRequest productoRequest);
+    Long crearProducto(ProductoRequest productoRequest);
 
     /**
      * Actualiza la información de un producto financiero existente.

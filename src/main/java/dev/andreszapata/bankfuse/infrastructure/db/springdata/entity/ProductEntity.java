@@ -26,7 +26,7 @@ public class ProductEntity {
 
 
     @Column(name = "numero_cuenta", nullable = false)
-    private int numeroCuenta;
+    private Long numeroCuenta;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado_cuenta", nullable = false)

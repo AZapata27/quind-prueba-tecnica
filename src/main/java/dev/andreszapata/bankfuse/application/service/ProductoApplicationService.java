@@ -18,9 +18,9 @@ public class ProductoApplicationService implements  ProductoService{
     private final CambiarEstadoProductoFinancieroUseCase cambiarEstadoProductoFinancieroUseCase;
     private final CancelarProductoFinancieroUseCase cancelarProductoFinancieroUseCase;
 
-    public void crearProducto(ProductoRequest productoRequest) {
+    public Long crearProducto(ProductoRequest productoRequest) {
 
-        crearProductoFinancieroUseCase.ejecutar(productoRequest.getTipoCuenta(), productoRequest.getIdCliente());
+        return crearProductoFinancieroUseCase.ejecutar(productoRequest.getTipoCuenta(), productoRequest.getIdCliente());
     }
 
     public void actualizarProducto(Long idProducto, EstadoCuenta estadoCuenta) {
