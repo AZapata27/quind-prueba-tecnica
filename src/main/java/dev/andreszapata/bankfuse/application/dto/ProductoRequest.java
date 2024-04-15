@@ -8,8 +8,6 @@ public class ProductoRequest {
 
     public Long idCliente;
     private TipoCuenta tipoCuenta;
-    private String numeroCuenta;
-    private String estadoCuenta;
     private Double saldo;
     private Boolean exentaGmf;
 }

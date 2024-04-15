@@ -28,7 +28,7 @@ public class ClientEntity {
     @Column(name = "numero_identificacion", nullable = false)
     private int numeroIdentificacion;
 
-    @Column(name = "apellidos", nullable = false)
+    @Column(name = "nombres", nullable = false)
     private String nombres;
 
     @Column(name = "apellidos", nullable = false)
