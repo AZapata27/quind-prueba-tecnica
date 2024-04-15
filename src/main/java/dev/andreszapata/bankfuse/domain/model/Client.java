@@ -38,6 +38,6 @@ public class Client {
     }
 
     public boolean esIdentificacionValida() {
-        return numeroIdentificacion !=null && numeroIdentificacion <= 0;
+        return numeroIdentificacion !=null && numeroIdentificacion > 0;
     }
 }
