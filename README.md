@@ -1,6 +1,6 @@
 # QUIND - Technical Test
 
-This is a sample project implementing an application using Java Spring Boot with a hexagonal architecture and domain-driven use cases.
+This is a sample project for the Tech Lead position at [quind.io](https://quind.io/) company. Implementing an application using Java Spring Boot with a hexagonal architecture and domain-driven use cases.
 The application allows for the management of clients and financial products for a banking institution.
 
 ## System Requirements
